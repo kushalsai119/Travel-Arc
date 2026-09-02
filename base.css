@@ -1,0 +1,588 @@
+/* ==========================================================================
+   TRAVELARC — BASE STYLESHEET (Kushal - Sections 1–9, 14–15)
+   100% Pure HTML5 & CSS3 Design System (Zero JavaScript)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. GOOGLE FONTS IMPORT
+   -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* --------------------------------------------------------------------------
+   2. DESIGN TOKENS & VARIABLES
+   -------------------------------------------------------------------------- */
+:root {
+    /* Warm TravelArc Palette */
+    --bg-main: #fffaf2;             /* Warm cream / light canvas */
+    --bg-surface: #ffffff;          /* Pure white for cards */
+    --bg-paper: #fbf8f3;            /* Notebook paper for Journal */
+    --bg-paper-alt: #f6f1e8;        /* Muted parchment for quotes */
+    --color-accent: #e67e22;        /* Vibrant TravelArc orange */
+    --color-accent-hover: #d35400;  /* Deep terracotta hover */
+    --color-accent-soft: rgba(230, 126, 34, 0.12);
+
+    --color-text-title: #1e293b;    /* Slate title */
+    --color-text-body: #475569;     /* Soft dark readable text */
+    --color-text-muted: #8c9ba5;    /* Subtitle & metadata */
+    --color-footer-bg: #0f172a;     /* Midnight slate footer */
+
+    /* Typography */
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-hand: 'Caveat', cursive, sans-serif;
+
+    /* Sizing & Borders */
+    --container-max-width: 1200px;
+    --container-padding: 32px;
+    --nav-height: 74px;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+
+    /* Soft Shadows */
+    --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.04);
+    --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+    --shadow-hover: 0 18px 32px -8px rgba(0, 0, 0, 0.12), 0 10px 14px -6px rgba(0, 0, 0, 0.04);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.3s ease;
+    --transition-slow: 0.4s ease;
+}
+
+/* --------------------------------------------------------------------------
+   3. RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-main);
+    color: var(--color-text-body);
+    line-height: 1.65;
+    font-size: 16px;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+/* --------------------------------------------------------------------------
+   4. PAGE WRAPPER LAYOUT
+   -------------------------------------------------------------------------- */
+.page-wrapper {
+    min-height: calc(100vh - 200px);
+}
+
+/* --------------------------------------------------------------------------
+   5. NAVIGATION BAR (FIXED, COMPACT, PURE HTML <a> LINKS)
+   -------------------------------------------------------------------------- */
+header.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-subtle);
+    height: var(--nav-height);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+/* Logo */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--color-text-title);
+    transition: opacity var(--transition-fast);
+}
+
+.brand:hover {
+    opacity: 0.9;
+}
+
+.brand-icon {
+    width: 38px;
+    height: 38px;
+    background-color: var(--color-accent);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(230, 126, 34, 0.25);
+}
+
+.brand-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.brand-name {
+    font-family: var(--font-serif);
+    font-size: 1.55rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.brand-name span {
+    color: var(--color-accent);
+}
+
+/* 5 Nav Links */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item a {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 4px;
+    font-size: 0.94rem;
+    font-weight: 500;
+    color: var(--color-text-body);
+    transition: color var(--transition-fast);
+}
+
+.nav-item svg {
+    width: 17px;
+    height: 17px;
+    fill: currentColor;
+    opacity: 0.75;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+/* Animated underline */
+.nav-item a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2.5px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.28s var(--transition-smooth);
+}
+
+.nav-item a:hover {
+    color: var(--color-accent);
+}
+
+.nav-item a:hover svg {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.nav-item a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Active Highlight */
+.nav-item.active a {
+    color: var(--color-accent);
+}
+
+.nav-item.active svg {
+    opacity: 1;
+}
+
+.nav-item.active a::after {
+    transform: scaleX(1);
+}
+
+/* --------------------------------------------------------------------------
+   6. SECTION HEADERS & LABELS
+   -------------------------------------------------------------------------- */
+.editorial-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--color-accent);
+    margin-bottom: 12px;
+}
+
+.editorial-label::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 2px;
+    background-color: var(--color-accent);
+}
+
+.section {
+    padding: 55px 0;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 40px auto;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--color-text-title);
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+
+.section-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-accent);
+}
+
+.section-lead {
+    font-size: 1.02rem;
+    color: var(--color-text-body);
+    line-height: 1.65;
+}
+
+/* --------------------------------------------------------------------------
+   7. HERO SECTION (HOME PAGE)
+   -------------------------------------------------------------------------- */
+.hero {
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('images/hero-india.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 60px 20px;
+    margin-bottom: 50px;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.75) 100%);
+}
+
+.hero-content-box {
+    position: relative;
+    z-index: 2;
+    background-color: #ffffff;
+    padding: 42px 48px;
+    max-width: 580px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--color-text-title);
+    line-height: 1.2;
+    margin: 8px 0 10px 0;
+}
+
+.hero-title span {
+    color: var(--color-accent);
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-text-title);
+    margin-bottom: 10px;
+}
+
+.hero-desc {
+    font-size: 0.96rem;
+    color: var(--color-text-body);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   8. BUTTONS & MICRO-INTERACTIONS
+   -------------------------------------------------------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 26px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.4px;
+    text-decoration: none;
+    transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(230, 126, 34, 0.35);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(230, 126, 34, 0.45);
+    color: #ffffff;
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-text-title);
+    border: 1px solid rgba(30, 41, 59, 0.25);
+}
+
+.btn-secondary:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background-color: rgba(230, 126, 34, 0.05);
+    transform: translateY(-2px);
+}
+
+.btn svg,
+.link-arrow svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    transition: transform var(--transition-fast);
+}
+
+.btn:hover svg,
+.link-arrow:hover svg {
+    transform: translateX(4px);
+}
+
+.link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.link-arrow:hover {
+    color: var(--color-accent-hover);
+}
+
+/* --------------------------------------------------------------------------
+   9. HOME: INTERACTIVE QUICK CARDS
+   -------------------------------------------------------------------------- */
+.quick-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 35px;
+    margin-bottom: 50px;
+}
+
+.quick-card {
+    background-color: var(--bg-surface);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius-md);
+    padding: 30px 26px;
+    box-shadow: var(--shadow-subtle);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-fast);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.quick-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card);
+    border-color: rgba(230, 126, 34, 0.3);
+}
+
+.quick-card-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.quick-card-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+}
+
+.quick-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--color-text-title);
+    margin-bottom: 8px;
+}
+
+.quick-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-body);
+    line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   14. FOOTER
+   -------------------------------------------------------------------------- */
+footer.site-footer {
+    background-color: var(--color-footer-bg);
+    color: #94a3b8;
+    padding: 50px 0 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-brand h3 {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+}
+
+.footer-brand p {
+    font-size: 0.88rem;
+    color: #64748b;
+}
+
+.footer-links {
+    display: flex;
+    gap: 22px;
+    list-style: none;
+}
+
+.footer-links a {
+    font-size: 0.88rem;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--color-accent);
+}
+
+.footer-bottom {
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: #64748b;
+}
+
+/* --------------------------------------------------------------------------
+   15. BASE RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+    .quick-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    .nav-menu {
+        gap: 12px;
+    }
+    .hero-content-box {
+        padding: 30px 22px;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    .footer-top {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
