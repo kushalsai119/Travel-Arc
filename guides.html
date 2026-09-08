@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Fixed Header & Navigation (Zero JavaScript) -->
     <header class="site-header">
         <div class="nav-container">
             <a href="index.html" class="brand">
@@ -15,26 +17,128 @@
                 </div>
                 <div class="brand-name">Travel<span>Arc</span></div>
             </a>
+
             <nav>
                 <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html">Home</a></li>
-                    <li class="nav-item"><a href="places.html">Places</a></li>
-                    <li class="nav-item"><a href="journal.html">Journal</a></li>
-                    <li class="nav-item active"><a href="guides.html">Your Guides</a></li>
-                    <li class="nav-item"><a href="contact.html">Contact</a></li>
+                    <!-- 1. Home -->
+                    <li class="nav-item">
+                        <a href="index.html">
+                            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                            Home
+                        </a>
+                    </li>
+                    <!-- 2. Places -->
+                    <li class="nav-item">
+                        <a href="places.html">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Places
+                        </a>
+                    </li>
+                    <!-- 3. Journal -->
+                    <li class="nav-item">
+                        <a href="journal.html">
+                            <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+                            Journal
+                        </a>
+                    </li>
+                    <!-- 4. Your Guides (Active) -->
+                    <li class="nav-item active">
+                        <a href="guides.html">
+                            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            Your Guides
+                        </a>
+                    </li>
+                    <!-- 5. Contact -->
+                    <li class="nav-item">
+                        <a href="contact.html">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            Contact
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
+
+    <!-- Main Content -->
     <main class="page-wrapper">
         <div class="section" style="padding-top: 40px;">
             <div class="container">
                 <div class="section-header">
                     <span class="editorial-label">LOCAL EXPERTISE</span>
                     <h1 class="section-title">Your <em>Guides</em></h1>
-                    <p class="section-lead">Meet some of our best local guides who can help you experience India beyond the usual tourist spots.</p>
+                    <p class="section-lead">
+                        Meet some of our best local guides who can help you experience India beyond the usual tourist spots.
+                    </p>
                 </div>
-                <div class="grid-3"></div>
+
+                <!-- 3x2 Clean Desktop Grid (Destination Photographs Representing the Guide's Region) -->
+                <div class="grid-3">
+
+                    <!-- Guide 1: Aarav Sharma -> Amber Fort, Rajasthan -->
+                    <article class="guide-card">
+                        <div class="guide-image-wrap">
+                            <img src="images/guide-rajasthan.jpg" alt="Real photograph of Mehrangarh Fort ramparts representing Rajasthan heritage guide">
+                            <span class="guide-exp-badge">8 Years Experience</span>
+                        </div>
+                        <div class="guide-body">
+                            <span class="guide-region">Rajasthan</span>
+                            <h3 class="guide-name">Aarav Sharma</h3>
+                            <div class="guide-specialty">Heritage & Culture Guide</div>
+                            <p class="guide-desc">
+                                Deeply knowledgeable about Rajasthan's royal forts, palace architecture, and desert folk traditions.
+                            </p>
+                            <div class="guide-card-footer">
+                                <a href="contact.html" class="btn btn-primary">
+                                    Choose Guide
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Guide 2: Meera Nair -> Alleppey Backwaters, Kerala -->
+                    <article class="guide-card">
+                        <div class="guide-image-wrap">
+                            <img src="images/guide-kerala.jpg" alt="Real photograph of Kochi Chinese fishing nets representing Kerala guide">
+                            <span class="guide-exp-badge">6 Years Experience</span>
+                        </div>
+                        <div class="guide-body">
+                            <span class="guide-region">Kerala</span>
+                            <h3 class="guide-name">Meera Nair</h3>
+                            <div class="guide-specialty">Backwaters & Local Experiences</div>
+                            <p class="guide-desc">
+                                Specializes in quiet village waterways, spice trail tours, and authentic traditional Kerala cuisine.
+                            </p>
+                            <div class="guide-card-footer">
+                                <a href="contact.html" class="btn btn-primary">
+                                    Choose Guide
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Guide 3: Rohan Thapa -> Rohtang Pass, Himachal Pradesh -->
+                    <article class="guide-card">
+                        <div class="guide-image-wrap">
+                            <img src="images/guide-himachal.jpg" alt="Real photograph of Parvati alpine valley stream representing Himachal Pradesh mountain guide">
+                            <span class="guide-exp-badge">7 Years Experience</span>
+                        </div>
+                        <div class="guide-body">
+                            <span class="guide-region">Himachal Pradesh</span>
+                            <h3 class="guide-name">Rohan Thapa</h3>
+                            <div class="guide-specialty">Mountain & Adventure Guide</div>
+                            <p class="guide-desc">
+                                Certified alpine trail guide leading scenic cedar forest hikes and peaceful valley excursions.
+                            </p>
+                            <div class="guide-card-footer">
+                                <a href="contact.html" class="btn btn-primary">
+                                    Choose Guide
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                                    </div>
             </div>
         </div>
     </main>
