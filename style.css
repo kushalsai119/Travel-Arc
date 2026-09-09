@@ -1,0 +1,1011 @@
+/* ==========================================================================
+   TRAVELARC — EXPLORE INDIA + LOCAL GUIDES + REAL TRAVEL EXPERIENCES
+   100% Pure HTML5 & CSS3 Design System (Zero JavaScript)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. GOOGLE FONTS IMPORT
+   -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* --------------------------------------------------------------------------
+   2. DESIGN TOKENS & VARIABLES
+   -------------------------------------------------------------------------- */
+:root {
+    /* Warm TravelArc Palette */
+    --bg-main: #fffaf2;             /* Warm cream / light canvas */
+    --bg-surface: #ffffff;          /* Pure white for cards */
+    --bg-paper: #fbf8f3;            /* Notebook paper for Journal */
+    --bg-paper-alt: #f6f1e8;        /* Muted parchment for quotes */
+    --color-accent: #e67e22;        /* Vibrant TravelArc orange */
+    --color-accent-hover: #d35400;  /* Deep terracotta hover */
+    --color-accent-soft: rgba(230, 126, 34, 0.12);
+
+    --color-text-title: #1e293b;    /* Slate title */
+    --color-text-body: #475569;     /* Soft dark readable text */
+    --color-text-muted: #8c9ba5;    /* Subtitle & metadata */
+    --color-footer-bg: #0f172a;     /* Midnight slate footer */
+
+    /* Typography */
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-hand: 'Caveat', cursive, sans-serif;
+
+    /* Sizing & Borders */
+    --container-max-width: 1200px;
+    --container-padding: 32px;
+    --nav-height: 74px;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+
+    /* Soft Shadows */
+    --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.04);
+    --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+    --shadow-hover: 0 18px 32px -8px rgba(0, 0, 0, 0.12), 0 10px 14px -6px rgba(0, 0, 0, 0.04);
+
+    /* Transitions */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   3. RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-main);
+    color: var(--color-text-body);
+    line-height: 1.65;
+    font-size: 16px;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+/* --------------------------------------------------------------------------
+   4. PURE CSS PAGE ENTRANCE ANIMATION (ZERO JS)
+   -------------------------------------------------------------------------- */
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page-wrapper {
+    animation: pageFadeIn 0.35s var(--transition-smooth) forwards;
+}
+
+/* --------------------------------------------------------------------------
+   5. NAVIGATION BAR (FIXED, COMPACT, PURE HTML <a> LINKS)
+   -------------------------------------------------------------------------- */
+header.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+    height: var(--nav-height);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+/* Logo */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.35);
+}
+
+.brand-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.brand-name {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--color-text-title);
+    text-transform: uppercase;
+}
+
+.brand-name span {
+    color: var(--color-accent);
+}
+
+/* 5 Nav Links */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 28px;
+}
+
+.nav-item a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--color-text-title);
+    padding: 8px 2px;
+    position: relative;
+    letter-spacing: 0.4px;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.nav-item svg {
+    width: 17px;
+    height: 17px;
+    fill: currentColor;
+    opacity: 0.75;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+/* Animated underline */
+.nav-item a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2.5px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.28s var(--transition-smooth);
+}
+
+.nav-item a:hover {
+    color: var(--color-accent);
+}
+
+.nav-item a:hover svg {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.nav-item a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Active Highlight */
+.nav-item.active a {
+    color: var(--color-accent);
+}
+
+.nav-item.active svg {
+    opacity: 1;
+}
+
+.nav-item.active a::after {
+    transform: scaleX(1);
+}
+
+/* --------------------------------------------------------------------------
+   6. SECTION HEADERS & LABELS
+   -------------------------------------------------------------------------- */
+.editorial-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--color-accent);
+    margin-bottom: 12px;
+}
+
+.editorial-label::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 2px;
+    background-color: var(--color-accent);
+}
+
+.section {
+    padding: 55px 0;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 40px auto;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--color-text-title);
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+
+.section-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-accent);
+}
+
+.section-lead {
+    font-size: 1.02rem;
+    color: var(--color-text-body);
+    line-height: 1.65;
+}
+
+/* --------------------------------------------------------------------------
+   7. HERO SECTION (HOME PAGE)
+   -------------------------------------------------------------------------- */
+.hero {
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('images/hero-india.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 20px auto 40px auto;
+    max-width: var(--container-max-width);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.22);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.75) 100%);
+}
+
+.hero-content-box {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    padding: 42px 48px;
+    max-width: 580px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--color-text-title);
+    line-height: 1.2;
+    margin: 8px 0 10px 0;
+}
+
+.hero-title span {
+    color: var(--color-accent);
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-text-title);
+    margin-bottom: 10px;
+}
+
+.hero-desc {
+    font-size: 0.96rem;
+    color: var(--color-text-body);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   8. BUTTONS & MICRO-INTERACTIONS
+   -------------------------------------------------------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 26px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.4px;
+    text-decoration: none;
+    transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(230, 126, 34, 0.35);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(230, 126, 34, 0.45);
+    color: #ffffff;
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-text-title);
+    border: 1px solid rgba(30, 41, 59, 0.25);
+}
+
+.btn-secondary:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background-color: rgba(230, 126, 34, 0.05);
+    transform: translateY(-2px);
+}
+
+.btn svg,
+.link-arrow svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    transition: transform var(--transition-fast);
+}
+
+.btn:hover svg,
+.link-arrow:hover svg {
+    transform: translateX(4px);
+}
+
+.link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.link-arrow:hover {
+    color: var(--color-accent-hover);
+}
+
+/* --------------------------------------------------------------------------
+   9. HOME: INTERACTIVE QUICK CARDS
+   -------------------------------------------------------------------------- */
+.quick-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 35px 0 50px 0;
+}
+
+.quick-card {
+    display: block;
+    background: var(--bg-surface);
+    padding: 30px 26px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.quick-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(230, 126, 34, 0.3);
+}
+
+.quick-card-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+    font-size: 1.5rem;
+}
+
+.quick-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--color-text-title);
+    margin-bottom: 8px;
+}
+
+.quick-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-body);
+    line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   10. DESTINATION CARDS (4-COLUMN DESKTOP GRID, PERFECT FIT)
+   -------------------------------------------------------------------------- */
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.destination-card {
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.destination-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-image-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    width: 100%;
+    background-color: #f1f5f9;
+}
+
+.card-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform var(--transition-slow);
+}
+
+.destination-card:hover .card-image-wrap img {
+    transform: scale(1.07);
+}
+
+.card-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(4px);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    padding: 4px 10px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card-body {
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-title {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-text-title);
+    margin-bottom: 8px;
+    transition: color var(--transition-fast);
+}
+
+.destination-card:hover .card-title {
+    color: var(--color-accent);
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-body);
+    line-height: 1.55;
+    margin-bottom: 16px;
+    flex-grow: 1;
+}
+
+.card-footer {
+    padding-top: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* --------------------------------------------------------------------------
+   11. YOUR GUIDES SECTION (3-COLUMN DESKTOP GRID, NO HUMAN FACES)
+   -------------------------------------------------------------------------- */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 30px;
+}
+
+.guide-card {
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.guide-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.guide-image-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    width: 100%;
+    background-color: #f1f5f9;
+}
+
+.guide-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform var(--transition-slow);
+}
+
+.guide-card:hover .guide-image-wrap img {
+    transform: scale(1.07);
+}
+
+.guide-exp-badge {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.4px;
+}
+
+.guide-body {
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.guide-region {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-accent);
+    margin-bottom: 4px;
+}
+
+.guide-name {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-text-title);
+    margin-bottom: 6px;
+}
+
+.guide-specialty {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--color-text-body);
+    margin-bottom: 12px;
+}
+
+.guide-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-body);
+    line-height: 1.55;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.guide-card-footer {
+    padding-top: 14px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.guide-card-footer .btn {
+    width: 100%;
+}
+
+/* Guide CTA Box */
+.guide-cta-card {
+    background: linear-gradient(135deg, #ffffff 0%, var(--bg-paper) 100%);
+    border: 1px dashed rgba(230, 126, 34, 0.4);
+    border-radius: var(--radius-lg);
+    padding: 45px 40px;
+    margin-top: 55px;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+}
+
+.guide-cta-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--color-text-title);
+    margin-bottom: 10px;
+}
+
+.guide-cta-card p {
+    font-size: 1rem;
+    color: var(--color-text-body);
+    max-width: 600px;
+    margin: 0 auto 22px auto;
+}
+
+/* --------------------------------------------------------------------------
+   12. TRAVEL JOURNAL & REVIEWS (WITH DESTINATION PHOTOS)
+   -------------------------------------------------------------------------- */
+.journal-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 30px;
+}
+
+.journal-review-card {
+    background: var(--bg-paper);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: var(--radius-md);
+    padding: 24px 22px;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.journal-review-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.journal-image-wrap {
+    width: 100%;
+    height: 165px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: 16px;
+    background-color: #f1f5f9;
+}
+
+.journal-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform var(--transition-slow);
+}
+
+.journal-review-card:hover .journal-image-wrap img {
+    transform: scale(1.06);
+}
+
+.journal-tag-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.journal-trip-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--color-accent);
+    background: rgba(230, 126, 34, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.journal-stars {
+    color: #f59e0b;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.journal-story-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-title);
+    margin-bottom: 8px;
+    line-height: 1.35;
+}
+
+.journal-quote {
+    font-size: 0.9rem;
+    color: var(--color-text-body);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 18px;
+    flex-grow: 1;
+}
+
+.journal-author-box {
+    padding-top: 14px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.84rem;
+}
+
+.journal-traveller-name {
+    font-weight: 700;
+    color: var(--color-text-title);
+}
+
+.journal-guide-badge {
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: 0.82rem;
+}
+
+/* --------------------------------------------------------------------------
+   13. CONTACT FORM SECTION (COMPACT & BALANCED)
+   -------------------------------------------------------------------------- */
+.contact-container {
+    max-width: 620px;
+    margin: 0 auto;
+    background: var(--bg-surface);
+    padding: 44px 48px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-title);
+    margin-bottom: 6px;
+    letter-spacing: 0.2px;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-text-title);
+    background-color: #fdfdfd;
+    border: 1px solid #dcdfe4;
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%2364748b'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--color-accent);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.18);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* --------------------------------------------------------------------------
+   14. FOOTER
+   -------------------------------------------------------------------------- */
+footer.site-footer {
+    background-color: var(--color-footer-bg);
+    color: #94a3b8;
+    padding: 50px 0 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-brand h3 {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+}
+
+.footer-brand p {
+    font-size: 0.88rem;
+    color: #64748b;
+}
+
+.footer-links {
+    display: flex;
+    gap: 22px;
+    list-style: none;
+}
+
+.footer-links a {
+    font-size: 0.88rem;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--color-accent);
+}
+
+.footer-bottom {
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: #64748b;
+}
+
+/* --------------------------------------------------------------------------
+   15. RESPONSIVE BREAKPOINTS (DESKTOP / TABLET / MOBILE)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 1024px) {
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .journal-reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .grid-4,
+    .grid-3,
+    .quick-cards-grid,
+    .journal-reviews-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .nav-menu {
+        gap: 12px;
+    }
+    .hero-content-box {
+        padding: 30px 22px;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    .contact-container {
+        padding: 32px 24px;
+    }
+}
