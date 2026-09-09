@@ -20,30 +20,35 @@
 
             <nav>
                 <ul class="nav-menu">
+                    <!-- 1. Home -->
                     <li class="nav-item">
                         <a href="index.html">
                             <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
                             Home
                         </a>
                     </li>
+                    <!-- 2. Places -->
                     <li class="nav-item">
                         <a href="places.html">
                             <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                             Places
                         </a>
                     </li>
+                    <!-- 3. Journal (Active) -->
                     <li class="nav-item active">
                         <a href="journal.html">
                             <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
                             Journal
                         </a>
                     </li>
+                    <!-- 4. Your Guides -->
                     <li class="nav-item">
                         <a href="guides.html">
                             <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
                             Your Guides
                         </a>
                     </li>
+                    <!-- 5. Contact -->
                     <li class="nav-item">
                         <a href="contact.html">
                             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
@@ -67,85 +72,123 @@
                     </p>
                 </div>
 
-                <!-- 6 Journal Review Cards Skeleton -->
+                <!-- 6 Journal Review Cards (3x2 Grid) with Real Destination Photographs -->
                 <div class="journal-reviews-grid">
+
+                    <!-- Review 1: Kashmir / Kabir Khan -> Dal Lake -->
                     <article class="journal-review-card">
+                        <div class="journal-image-wrap">
+                            <img src="images/journal-kashmir.jpg" alt="Real photograph of mountain valley and meadows near Gulmarg, Kashmir">
+                        </div>
                         <div class="journal-tag-row">
                             <span class="journal-trip-badge">Trip Journal · Kashmir</span>
                             <span class="journal-stars">★★★★★</span>
                         </div>
                         <h3 class="journal-story-title">Three Days in Kashmir</h3>
-                        <p class="journal-quote">“Kabir helped us discover places we would never have found on our own. The trip felt personal, relaxed and completely different from a typical tourist experience.”</p>
+                        <p class="journal-quote">
+                            “Kabir helped us discover places we would never have found on our own. The trip felt personal, relaxed and completely different from a typical tourist experience.”
+                        </p>
                         <div class="journal-author-box">
                             <span class="journal-traveller-name">Traveller: Rahul</span>
                             <span class="journal-guide-badge">Guide: Kabir Khan</span>
                         </div>
                     </article>
 
+                    <!-- Review 2: Kerala / Meera Nair -> Alleppey Backwaters -->
                     <article class="journal-review-card">
+                        <div class="journal-image-wrap">
+                            <img src="images/journal-kerala.jpg" alt="Real photograph of lush tea plantations in Munnar, Kerala">
+                        </div>
                         <div class="journal-tag-row">
                             <span class="journal-trip-badge">Trip Journal · Kerala</span>
                             <span class="journal-stars">★★★★★</span>
                         </div>
                         <h3 class="journal-story-title">Kerala Beyond the Backwaters</h3>
-                        <p class="journal-quote">“Meera introduced us to local food, small villages and quiet parts of Alleppey that we would have missed. Her warmth made the whole trip memorable.”</p>
+                        <p class="journal-quote">
+                            “Meera introduced us to local food, small villages and quiet parts of Alleppey that we would have missed. Her warmth made the whole trip memorable.”
+                        </p>
                         <div class="journal-author-box">
                             <span class="journal-traveller-name">Traveller: Priya</span>
                             <span class="journal-guide-badge">Guide: Meera Nair</span>
                         </div>
                     </article>
 
+                    <!-- Review 3: Rajasthan / Aarav Sharma -> Amber Fort -->
                     <article class="journal-review-card">
+                        <div class="journal-image-wrap">
+                            <img src="images/journal-rajasthan.jpg" alt="Real photograph of iconic Hawa Mahal in Jaipur, Rajasthan">
+                        </div>
                         <div class="journal-tag-row">
                             <span class="journal-trip-badge">Trip Journal · Rajasthan</span>
                             <span class="journal-stars">★★★★★</span>
                         </div>
                         <h3 class="journal-story-title">Walking Through Jaipur's History</h3>
-                        <p class="journal-quote">“Aarav brought the history of Amber Fort alive with tales of royal heritage, craft streets, and hidden architectural details. Unforgettable desert evenings!”</p>
+                        <p class="journal-quote">
+                            “Aarav brought the history of Amber Fort alive with tales of royal heritage, craft streets, and hidden architectural details. Unforgettable desert evenings!”
+                        </p>
                         <div class="journal-author-box">
                             <span class="journal-traveller-name">Traveller: Siddharth</span>
                             <span class="journal-guide-badge">Guide: Aarav Sharma</span>
                         </div>
                     </article>
 
+                    <!-- Review 4: Himachal / Rohan Thapa -> Rohtang Pass -->
                     <article class="journal-review-card">
+                        <div class="journal-image-wrap">
+                            <img src="images/journal-himachal.jpg" alt="Real photograph of pine trails and valley near Solang, Himachal Pradesh">
+                        </div>
                         <div class="journal-tag-row">
                             <span class="journal-trip-badge">Trip Journal · Himachal</span>
                             <span class="journal-stars">★★★★★</span>
                         </div>
-                        <h3 class="journal-story-title">Mountain Trails and Village Life</h3>
-                        <p class="journal-quote">“Rohan took us on lesser-known walking trails through cedar forests and introduced us to mountain families. Genuine hospitality and breathtaking scenery.”</p>
+                        <h3 class="journal-story-title">Pine Trails of Himachal</h3>
+                        <p class="journal-quote">
+                            “Rohan guided us along breathtaking mountain paths near Manali with great care and infectious love for the Himalayas. He showed us peaceful trails far from any crowds.”
+                        </p>
                         <div class="journal-author-box">
-                            <span class="journal-traveller-name">Traveller: Ananya</span>
+                            <span class="journal-traveller-name">Traveller: Vikram</span>
                             <span class="journal-guide-badge">Guide: Rohan Thapa</span>
                         </div>
                     </article>
 
+                    <!-- Review 5: Varanasi / Ananya Singh -> Dashashwamedh Ghat -->
                     <article class="journal-review-card">
+                        <div class="journal-image-wrap">
+                            <img src="images/journal-varanasi.jpg" alt="Real photograph of evening Ganga Aarti ceremony at Varanasi Ghats">
+                        </div>
                         <div class="journal-tag-row">
                             <span class="journal-trip-badge">Trip Journal · Varanasi</span>
                             <span class="journal-stars">★★★★★</span>
                         </div>
-                        <h3 class="journal-story-title">Sunrise on the Sacred Ghats</h3>
-                        <p class="journal-quote">“Ananya's deep understanding of Varanasi's traditions made our dawn boat ride unforgettable. She explained rituals with grace, respect, and deep knowledge.”</p>
+                        <h3 class="journal-story-title">Morning Aarti at the Ghats</h3>
+                        <p class="journal-quote">
+                            “Ananya’s morning boat tour along the ghats offered a calm, deeply spiritual view of Varanasi we will always treasure. She explained rituals with immense depth and respect.”
+                        </p>
                         <div class="journal-author-box">
-                            <span class="journal-traveller-name">Traveller: Vikram</span>
+                            <span class="journal-traveller-name">Traveller: Sneha</span>
                             <span class="journal-guide-badge">Guide: Ananya Singh</span>
                         </div>
                     </article>
 
+                    <!-- Review 6: Ladakh / Tashi Dorje -> Pangong Lake -->
                     <article class="journal-review-card">
+                        <div class="journal-image-wrap">
+                            <img src="images/journal-ladakh.jpg" alt="Real photograph of Thiksey Hilltop Monastery, Ladakh">
+                        </div>
                         <div class="journal-tag-row">
                             <span class="journal-trip-badge">Trip Journal · Ladakh</span>
                             <span class="journal-stars">★★★★★</span>
                         </div>
-                        <h3 class="journal-story-title">High Altitude Solitude</h3>
-                        <p class="journal-quote">“Tashi's experience as a high-altitude guide made us feel completely safe in remote Ladakh passes. The monastery visit at sunrise was life-changing.”</p>
+                        <h3 class="journal-story-title">Life Around Pangong Lake</h3>
+                        <p class="journal-quote">
+                            “Tashi introduced us to local monastery elders and shared stories of high-altitude life that no guidebook could match. His knowledge of the valleys made us feel completely at home.”
+                        </p>
                         <div class="journal-author-box">
-                            <span class="journal-traveller-name">Traveller: Neha</span>
+                            <span class="journal-traveller-name">Traveller: Amit</span>
                             <span class="journal-guide-badge">Guide: Tashi Dorje</span>
                         </div>
                     </article>
+
                 </div>
             </div>
         </div>
