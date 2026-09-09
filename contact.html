@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TravelArc — Plan Your Trip & Contact Us</title>
+    <meta name="description" content="Plan your journey across India with certified local resident guides. Get in touch with TravelArc to customize your authentic travel itinerary.">
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="contact.css">
 </head>
 <body>
+
+    <!-- Fixed Header & Navigation (Zero JavaScript) -->
     <header class="site-header">
         <div class="nav-container">
             <a href="index.html" class="brand">
@@ -16,33 +19,130 @@
                 </div>
                 <div class="brand-name">Travel<span>Arc</span></div>
             </a>
+
             <nav>
                 <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html">Home</a></li>
-                    <li class="nav-item"><a href="places.html">Places</a></li>
-                    <li class="nav-item"><a href="journal.html">Journal</a></li>
-                    <li class="nav-item"><a href="guides.html">Your Guides</a></li>
-                    <li class="nav-item active"><a href="contact.html">Contact</a></li>
+                    <!-- 1. Home -->
+                    <li class="nav-item">
+                        <a href="index.html">
+                            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                            Home
+                        </a>
+                    </li>
+                    <!-- 2. Places -->
+                    <li class="nav-item">
+                        <a href="places.html">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Places
+                        </a>
+                    </li>
+                    <!-- 3. Journal -->
+                    <li class="nav-item">
+                        <a href="journal.html">
+                            <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+                            Journal
+                        </a>
+                    </li>
+                    <!-- 4. Your Guides -->
+                    <li class="nav-item">
+                        <a href="guides.html">
+                            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            Your Guides
+                        </a>
+                    </li>
+                    <!-- 5. Contact (Active) -->
+                    <li class="nav-item active">
+                        <a href="contact.html">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            Contact
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
+
+    <!-- Main Page Content (Pure CSS Fade-In) -->
     <main class="page-wrapper">
         <div class="section" style="padding-top: 40px; padding-bottom: 70px;">
             <div class="container">
                 <div class="section-header">
                     <span class="editorial-label">GET IN TOUCH</span>
                     <h1 class="section-title">Plan Your Trip <em>With a Guide</em></h1>
-                    <p class="section-lead">Looking for a personal guide? Fill in your details and tell us where you want to go.</p>
+                    <p class="section-lead">
+                        Looking for a personal guide? Fill in your details and tell us where you want to go.
+                    </p>
                 </div>
-                <div class="contact-container"></div>
+
+                <div class="contact-container">
+                    <form action="#" method="post">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="user-name">Your Name</label>
+                                <input type="text" id="user-name" name="name" placeholder="e.g. Rahul Sharma" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="user-email">Your Email</label>
+                                <input type="email" id="user-email" name="email" placeholder="e.g. rahul@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="destination">Favorite Destination</label>
+                            <input type="text" id="destination" name="destination" placeholder="e.g. Kashmir, Kerala, Rajasthan..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferred-guide">Preferred Guide</label>
+                            <select id="preferred-guide" name="guide">
+                                <option value="Any Guide">Any Guide</option>
+                                <option value="Aarav Sharma">Aarav Sharma (Rajasthan)</option>
+                                <option value="Meera Nair">Meera Nair (Kerala)</option>
+                                <option value="Rohan Thapa">Rohan Thapa (Himachal Pradesh)</option>
+                                <option value="Ananya Singh">Ananya Singh (Varanasi)</option>
+                                <option value="Kabir Khan">Kabir Khan (Kashmir)</option>
+                                <option value="Tashi Dorje">Tashi Dorje (Ladakh)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your trip and the guide you would like." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px 20px;">
+                            SEND MESSAGE
+                            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                        </button>
+                    </form>
+                </div>
+
             </div>
         </div>
     </main>
+
+    <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2026 TravelArc. Curated Indian Travel & Local Guides.</p>
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h3>TRAVELARC</h3>
+                    <p>Explore • Discover • Experience</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="places.html">Places</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                    <li><a href="guides.html">Your Guides</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TravelArc. Curated Indian Travel & Local Guides.</p>
+                <p>College HTML5/CSS3 Prototype & Academic Portfolio</p>
+            </div>
         </div>
     </footer>
+
 </body>
 </html>
