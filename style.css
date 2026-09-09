@@ -843,3 +843,169 @@ header.site-header {
     font-size: 0.82rem;
 }
 
+/* --------------------------------------------------------------------------
+   13. CONTACT FORM SECTION (COMPACT & BALANCED)
+   -------------------------------------------------------------------------- */
+.contact-container {
+    max-width: 620px;
+    margin: 0 auto;
+    background: var(--bg-surface);
+    padding: 44px 48px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-title);
+    margin-bottom: 6px;
+    letter-spacing: 0.2px;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-text-title);
+    background-color: #fdfdfd;
+    border: 1px solid #dcdfe4;
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%2364748b'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--color-accent);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.18);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* --------------------------------------------------------------------------
+   14. FOOTER
+   -------------------------------------------------------------------------- */
+footer.site-footer {
+    background-color: var(--color-footer-bg);
+    color: #94a3b8;
+    padding: 50px 0 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-brand h3 {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+}
+
+.footer-brand p {
+    font-size: 0.88rem;
+    color: #64748b;
+}
+
+.footer-links {
+    display: flex;
+    gap: 22px;
+    list-style: none;
+}
+
+.footer-links a {
+    font-size: 0.88rem;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--color-accent);
+}
+
+.footer-bottom {
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: #64748b;
+}
+
+/* --------------------------------------------------------------------------
+   15. RESPONSIVE BREAKPOINTS (DESKTOP / TABLET / MOBILE)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 1024px) {
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .journal-reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .grid-4,
+    .grid-3,
+    .quick-cards-grid,
+    .journal-reviews-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .nav-menu {
+        gap: 12px;
+    }
+    .hero-content-box {
+        padding: 30px 22px;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    .contact-container {
+        padding: 32px 24px;
+    }
+}
