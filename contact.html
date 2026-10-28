@@ -58,6 +58,13 @@
                             Contact
                         </a>
                     </li>
+                    <!-- 6. Book Trip -->
+                    <li class="nav-item">
+                        <a href="booking.html">
+                            <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                            Book Trip
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -76,7 +83,8 @@
                 </div>
 
                 <div class="contact-container">
-                    <form action="#" method="post">
+                    <div id="contactFormSuccess" class="success-box" style="display:none; margin-bottom:20px;">✓ Thank you! Your message has been received. Our team will contact you shortly.</div>
+                    <form id="contactForm" novalidate>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="user-name">Your Name</label>
@@ -119,6 +127,56 @@
                 </div>
 
             </div>
+
+                <!-- Interactive FAQ Accordion Section -->
+                <div class="faq-section">
+                    <div class="section-header" style="margin-bottom: 20px;">
+                        <span class="editorial-label">HELP & FREQUENT QUESTIONS</span>
+                        <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
+                    </div>
+
+                    <div class="faq-list">
+                        <div class="faq-item" onclick="toggleFaq(this)">
+                            <div class="faq-question">
+                                <span>How do I book a trip with an assigned guide?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Simply click "Book Trip" in the top navigation or choose any guide from the "Your Guides" page. Our interactive booking system will pre-select the guide and calculate your trip cost in real-time.
+                            </div>
+                        </div>
+
+                        <div class="faq-item" onclick="toggleFaq(this)">
+                            <div class="faq-question">
+                                <span>Can I change my travel dates after submitting?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Yes! All reservations are stored locally and our verified local guides offer free date reschedules up to 48 hours prior to your tour departure.
+                            </div>
+                        </div>
+
+                        <div class="faq-item" onclick="toggleFaq(this)">
+                            <div class="faq-question">
+                                <span>How do I export and save my booking confirmation?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                On the "Book Trip" page, click the black "📥 Download bookings.json" button. Your browser will instantly generate and save a verified JSON record directly to your computer!
+                            </div>
+                        </div>
+
+                        <div class="faq-item" onclick="toggleFaq(this)">
+                            <div class="faq-question">
+                                <span>Are all 8 travel destinations photographed on location?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Absolutely. Every landmark photograph displayed in TravelArc (from Kashmir's Dal Lake to Kerala's Alleppey Backwaters) features authentic regional photography.
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </main>
 
@@ -136,6 +194,7 @@
                     <li><a href="journal.html">Journal</a></li>
                     <li><a href="guides.html">Your Guides</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="booking.html">Book Trip</a></li>
                 </ul>
             </div>
             <div class="footer-bottom">
@@ -145,5 +204,7 @@
         </div>
     </footer>
 
+    <!-- Unified TravelArc JavaScript (Govind Jha L11-L17) -->
+    <script src="contact.js"></script>
 </body>
 </html>

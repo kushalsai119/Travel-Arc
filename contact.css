@@ -82,3 +82,14 @@ textarea {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* 14. REAL-TIME INPUT VALIDATION STATES (Kapil) */
+input.field-valid, textarea.field-valid {
+    border-color: #10b981 !important;
+    background-color: #f0fdf4 !important;
+}
+input.field-invalid, textarea.field-invalid {
+    border-color: #ef4444 !important;
+    background-color: #fef2f2 !important;
+}
