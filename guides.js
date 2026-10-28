@@ -48,3 +48,4 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+// Jagannath: guide availability badge integration
