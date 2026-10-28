@@ -57,6 +57,13 @@
                             Contact
                         </a>
                     </li>
+                    <!-- 6. Book Trip -->
+                    <li class="nav-item">
+                        <a href="booking.html">
+                            <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                            Book Trip
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -69,6 +76,7 @@
         <div class="hero">
             <div class="hero-overlay"></div>
             <div class="hero-content-box">
+                <div class="greeting-badge" id="heroGreeting">☀️ Welcome, Explorer</div>
                 <span class="editorial-label">EXPLORE INDIA</span>
                 <h1 class="hero-title">Travel<span>Arc</span></h1>
                 <h2 class="hero-subtitle">Discover places. Create memories.</h2>
@@ -83,6 +91,35 @@
                     <a href="guides.html" class="btn btn-secondary">
                         Meet Our Guides
                     </a>
+                    <a href="booking.html" class="btn btn-primary" style="background: #0f172a; border-color: #0f172a;">
+                        Book Trip
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why TravelArc Feature Highlights Strip (Eliminates Empty White Space) -->
+        <div class="container" style="margin-top: -10px; margin-bottom: 20px;">
+            <div class="features-grid">
+                <div class="feature-item-card">
+                    <div class="feature-icon-circle">🗺️</div>
+                    <h4>8 Curated Escapes</h4>
+                    <p>Handpicked destinations photographed on location, from Himalayan passes to Kerala backwaters.</p>
+                </div>
+                <div class="feature-item-card">
+                    <div class="feature-icon-circle">👤</div>
+                    <h4>Verified Local Guides</h4>
+                    <p>Resident experts with average 7+ years of experience sharing authentic regional stories.</p>
+                </div>
+                <div class="feature-item-card">
+                    <div class="feature-icon-circle">📖</div>
+                    <h4>Traveller Dispatches</h4>
+                    <p>Genuine, unedited stories with reading scroll depth tracking and helpful ratings.</p>
+                </div>
+                <div class="feature-item-card">
+                    <div class="feature-icon-circle">💾</div>
+                    <h4>Instant JSON Booking</h4>
+                    <p>Live rate calculation, input validation, local data storage, and one-click JSON file export.</p>
                 </div>
             </div>
         </div>
@@ -130,99 +167,151 @@
             </div>
         </div>
 
-        <!-- Featured Destinations (Exactly 4 Indian Destinations with Real Landmark Photos) -->
-        <section class="section" style="background-color: #fdfaf5; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);">
+        <!-- UNIQUE SECTION 1: CURATED JOURNEY STYLES (Zero repetition from Places page) -->
+        <section class="section" style="background-color: #ffffff; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
             <div class="container">
                 <div class="section-header">
-                    <span class="editorial-label">HANDPICKED DESTINATIONS</span>
-                    <h2 class="section-title">Featured <em>Destinations</em></h2>
+                    <span class="editorial-label">CURATED WAYS TO TRAVEL</span>
+                    <h2 class="section-title">Explore by <em>Journey Style</em></h2>
                     <p class="section-lead">
-                        Four iconic Indian escapes celebrated for landscapes, architecture, and peaceful moments.
+                        Instead of generic sightseeing, TravelArc pairs you with verified local residents across four distinct Indian travel atmospheres.
                     </p>
                 </div>
 
-                <div class="grid-4">
-                    <!-- 1. Kashmir -> Dal Lake -->
-                    <article class="destination-card">
-                        <div class="card-image-wrap">
-                            <span class="card-badge">Dal Lake</span>
-                            <img src="images/kashmir.jpg" alt="Real photograph of Dal Lake and Shikaras in Srinagar, Kashmir">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Kashmir</h3>
-                            <p class="card-desc">
-                                Scenic valleys, peaceful lakes and breathtaking mountains.
+                <div class="journey-styles-grid">
+                    <!-- Style 1: Alpine Valleys -->
+                    <div class="style-card">
+                        <div>
+                            <div class="style-icon-wrap">🏔️</div>
+                            <span class="style-badge">Mountains & Trails</span>
+                            <h3 class="style-title">Highland Valleys & Alpine Trails</h3>
+                            <p class="style-desc">
+                                Pine-scented mountain paths, cedar forest homestays, glacial streams, and high Himalayan passes far from crowded resorts.
                             </p>
-                            <div class="card-footer">
-                                <span style="font-size: 0.8rem; color: var(--color-text-muted);">Srinagar</span>
-                                <a href="places.html" class="link-arrow">
-                                    Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                </a>
-                            </div>
                         </div>
-                    </article>
+                        <div>
+                            <div class="style-meta">Key Regions: Kashmir, Himachal, Ladakh</div>
+                            <a href="places.html" class="link-arrow">
+                                Explore Mountain Escapes <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
 
-                    <!-- 2. Kerala -> Alleppey Backwaters -->
-                    <article class="destination-card">
-                        <div class="card-image-wrap">
-                            <span class="card-badge">Backwaters</span>
-                            <img src="images/kerala.jpg" alt="Real photograph of traditional houseboat on Alleppey Backwaters in Kerala">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Kerala</h3>
-                            <p class="card-desc">
-                                Backwaters, greenery, local food and peaceful villages.
+                    <!-- Style 2: Coastal Serenity -->
+                    <div class="style-card">
+                        <div>
+                            <div class="style-icon-wrap">🛶</div>
+                            <span class="style-badge">Coastal & Waterways</span>
+                            <h3 class="style-title">Serene Backwaters & Coastlines</h3>
+                            <p class="style-desc">
+                                Traditional wooden kettuvallam houseboats, quiet village coconut canals, spice farm trails, and warm Arabian Sea sunsets.
                             </p>
-                            <div class="card-footer">
-                                <span style="font-size: 0.8rem; color: var(--color-text-muted);">Alleppey</span>
-                                <a href="places.html" class="link-arrow">
-                                    Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                </a>
-                            </div>
                         </div>
-                    </article>
+                        <div>
+                            <div class="style-meta">Key Regions: Kerala, Goa</div>
+                            <a href="places.html" class="link-arrow">
+                                Explore Coastal Journeys <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
 
-                    <!-- 3. Rajasthan -> Amber Fort -->
-                    <article class="destination-card">
-                        <div class="card-image-wrap">
-                            <span class="card-badge">Amber Fort</span>
-                            <img src="images/rajasthan.jpg" alt="Real photograph of Amber Fort architecture in Jaipur, Rajasthan">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Rajasthan</h3>
-                            <p class="card-desc">
-                                Forts, palaces, desert landscapes and rich culture.
+                    <!-- Style 3: Royal Heritage -->
+                    <div class="style-card">
+                        <div>
+                            <div class="style-icon-wrap">🏰</div>
+                            <span class="style-badge">Living Heritage</span>
+                            <h3 class="style-title">Imperial Forts & Desert Folkways</h3>
+                            <p class="style-desc">
+                                Golden sandstone ramparts, painted havelis, desert campfire folk music, and vibrant artisan handicraft lanes.
                             </p>
-                            <div class="card-footer">
-                                <span style="font-size: 0.8rem; color: var(--color-text-muted);">Jaipur</span>
-                                <a href="places.html" class="link-arrow">
-                                    Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                </a>
-                            </div>
                         </div>
-                    </article>
+                        <div>
+                            <div class="style-meta">Key Regions: Rajasthan</div>
+                            <a href="places.html" class="link-arrow">
+                                Explore Royal Escapes <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
 
-                    <!-- 4. Ladakh -> Pangong Lake -->
-                    <article class="destination-card">
-                        <div class="card-image-wrap">
-                            <span class="card-badge">Pangong Lake</span>
-                            <img src="images/ladakh.jpg" alt="Real photograph of Pangong Lake blue waters and mountains in Ladakh">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Ladakh</h3>
-                            <p class="card-desc">
-                                High mountains, monasteries and dramatic landscapes.
+                    <!-- Style 4: Sacred Riverways -->
+                    <div class="style-card">
+                        <div>
+                            <div class="style-icon-wrap">🕉️</div>
+                            <span class="style-badge">Culture & Rivers</span>
+                            <h3 class="style-title">Sacred Ghats & Living Traditions</h3>
+                            <p class="style-desc">
+                                Dawn wooden boat rides along ancient stone ghats, evening Aarti chanting, living root bridges, and historic weaver quarters.
                             </p>
-                            <div class="card-footer">
-                                <span style="font-size: 0.8rem; color: var(--color-text-muted);">Pangong Tso</span>
-                                <a href="places.html" class="link-arrow">
-                                    Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                </a>
-                            </div>
                         </div>
-                    </article>
+                        <div>
+                            <div class="style-meta">Key Regions: Varanasi, Meghalaya</div>
+                            <a href="places.html" class="link-arrow">
+                                Explore Riverways & Ghats <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- UNIQUE SECTION 2: INTERACTIVE SEASON MATCHER (Pure JavaScript Widget) -->
+        <section class="section" style="background-color: #f8fafc; padding-top: 50px; padding-bottom: 70px;">
+            <div class="container">
+                <div class="section-header">
+                    <span class="editorial-label">WHEN TO TRAVEL</span>
+                    <h2 class="section-title">Ideal Timing for <em>Every Region</em></h2>
+                    <p class="section-lead">
+                        Click a season to discover where weather, festivals, and local conditions are at their very best.
+                    </p>
+                </div>
+
+                <div class="season-matcher-card">
+                    <!-- Interactive Season Tabs (L16 DOM Event) -->
+                    <div class="season-tabs-row">
+                        <button type="button" class="season-tab-btn active" onclick="switchSeason('winter', this)">
+                            ❄️ Winter (Nov – Feb)
+                        </button>
+                        <button type="button" class="season-tab-btn" onclick="switchSeason('spring', this)">
+                            🌸 Spring & Summer (Mar – Jun)
+                        </button>
+                        <button type="button" class="season-tab-btn" onclick="switchSeason('monsoon', this)">
+                            ☀️ High Altitude & Monsoon (Jul – Oct)
+                        </button>
+                    </div>
+
+                    <!-- Live Dynamic Season Spotlight -->
+                    <div id="seasonSpotlight" class="season-spotlight-box">
+                        <div class="season-spotlight-icon" id="seasonIcon">❄️</div>
+                        <div class="season-spotlight-content">
+                            <h3 id="seasonTitle">Winter: Royal Deserts & Calm Tropical Waters</h3>
+                            <p id="seasonDesc">
+                                Mild, pleasant daytime weather makes winter ideal for exploring Rajasthan's desert forts, cruising Kerala's palm-fringed backwaters, and experiencing early morning boat rides in Varanasi.
+                            </p>
+                            <div class="season-highlights-pills" id="seasonTags">
+                                <span class="season-tag">📍 Rajasthan (Jaipur & Jodhpur)</span>
+                                <span class="season-tag">📍 Kerala (Alleppey & Kochi)</span>
+                                <span class="season-tag">📍 Varanasi Ghats</span>
+                                <span class="season-tag">🌡️ Avg 18°C – 25°C</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <!-- Newsletter Dispatch Strip (Kushal - L16 DOM Event & L13 Validation) -->
+        <section class="newsletter-strip">
+            <div class="container newsletter-box">
+                <div class="newsletter-text">
+                    <h3>Join the TravelArc Dispatches</h3>
+                    <p>Get authentic seasonal itineraries and verified guide stories delivered to your inbox.</p>
+                </div>
+                <form id="newsletterForm" class="newsletter-form">
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+            <div id="newsletterSuccess" class="newsletter-success-toast"></div>
         </section>
 
     </main>
@@ -241,6 +330,7 @@
                     <li><a href="journal.html">Journal</a></li>
                     <li><a href="guides.html">Your Guides</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="booking.html">Book Trip</a></li>
                 </ul>
             </div>
             <div class="footer-bottom">
@@ -249,6 +339,14 @@
             </div>
         </div>
     </footer>
+
+
+    <!-- Unified TravelArc JavaScript (Govind Jha L11-L17) -->
+    <script src="home.js"></script>
+    <!-- Action Toast Notification -->
+    <div id="actionToast" class="action-toast"></div>
+    <!-- Floating Back to Top Button (Kushal - L16 DOM Event) -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
 
 </body>
 </html>
