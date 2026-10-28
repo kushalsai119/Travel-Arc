@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TravelArc — Travel Journal & Reviews</title>
     <meta name="description" content="Read authentic travel dispatches and genuine reviews from journeys across India with local resident guides.">
-    <meta name="description" content="Read authentic travel dispatches and genuine reviews from journeys across India with local resident guides.">
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="journal.css">
 </head>
 <body>
+    <!-- Scroll Progress Indicator -->
+    <div id="scrollProgress"></div>
 
     <!-- Fixed Header & Navigation (Zero JavaScript) -->
     <header class="site-header">
@@ -58,6 +59,13 @@
                             Contact
                         </a>
                     </li>
+                    <!-- 6. Book Trip -->
+                    <li class="nav-item">
+                        <a href="booking.html">
+                            <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                            Book Trip
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -87,13 +95,19 @@
                             <span class="journal-trip-badge">Trip Journal · Kashmir</span>
                             <span class="journal-stars">★★★★★</span>
                         </div>
+                        <div class="journal-read-estimate">⏱️ 3 min read</div>
                         <h3 class="journal-story-title">Three Days in Kashmir</h3>
                         <p class="journal-quote">
                             “Kabir helped us discover places we would never have found on our own. The trip felt personal, relaxed and completely different from a typical tourist experience.”
                         </p>
                         <div class="journal-author-box">
-                            <span class="journal-traveller-name">Traveller: Rahul</span>
-                            <span class="journal-guide-badge">Guide: Kabir Khan</span>
+                            <div class="journal-author-meta">
+                                <span class="journal-traveller-name">Traveller: Rahul</span>
+                                <span class="journal-guide-badge">Guide: Kabir Khan</span>
+                            </div>
+                            <button type="button" class="btn-helpful" onclick="markHelpful(this)">
+                                <span>🔖</span> Helpful (<span class="like-num">18</span>)
+                            </button>
                         </div>
                     </article>
 
@@ -106,13 +120,19 @@
                             <span class="journal-trip-badge">Trip Journal · Kerala</span>
                             <span class="journal-stars">★★★★★</span>
                         </div>
+                        <div class="journal-read-estimate">⏱️ 4 min read</div>
                         <h3 class="journal-story-title">Kerala Beyond the Backwaters</h3>
                         <p class="journal-quote">
                             “Meera introduced us to local food, small villages and quiet parts of Alleppey that we would have missed. Her warmth made the whole trip memorable.”
                         </p>
                         <div class="journal-author-box">
-                            <span class="journal-traveller-name">Traveller: Priya</span>
-                            <span class="journal-guide-badge">Guide: Meera Nair</span>
+                            <div class="journal-author-meta">
+                                <span class="journal-traveller-name">Traveller: Priya</span>
+                                <span class="journal-guide-badge">Guide: Meera Nair</span>
+                            </div>
+                            <button type="button" class="btn-helpful" onclick="markHelpful(this)">
+                                <span>🔖</span> Helpful (<span class="like-num">18</span>)
+                            </button>
                         </div>
                     </article>
 
@@ -130,8 +150,13 @@
                             “Aarav brought the history of Amber Fort alive with tales of royal heritage, craft streets, and hidden architectural details. Unforgettable desert evenings!”
                         </p>
                         <div class="journal-author-box">
-                            <span class="journal-traveller-name">Traveller: Siddharth</span>
-                            <span class="journal-guide-badge">Guide: Aarav Sharma</span>
+                            <div class="journal-author-meta">
+                                <span class="journal-traveller-name">Traveller: Siddharth</span>
+                                <span class="journal-guide-badge">Guide: Aarav Sharma</span>
+                            </div>
+                            <button type="button" class="btn-helpful" onclick="markHelpful(this)">
+                                <span>🔖</span> Helpful (<span class="like-num">18</span>)
+                            </button>
                         </div>
                     </article>
 
@@ -149,8 +174,13 @@
                             “Rohan guided us along breathtaking mountain paths near Manali with great care and infectious love for the Himalayas. He showed us peaceful trails far from any crowds.”
                         </p>
                         <div class="journal-author-box">
-                            <span class="journal-traveller-name">Traveller: Vikram</span>
-                            <span class="journal-guide-badge">Guide: Rohan Thapa</span>
+                            <div class="journal-author-meta">
+                                <span class="journal-traveller-name">Traveller: Vikram</span>
+                                <span class="journal-guide-badge">Guide: Rohan Thapa</span>
+                            </div>
+                            <button type="button" class="btn-helpful" onclick="markHelpful(this)">
+                                <span>🔖</span> Helpful (<span class="like-num">18</span>)
+                            </button>
                         </div>
                     </article>
 
@@ -168,8 +198,13 @@
                             “Ananya’s morning boat tour along the ghats offered a calm, deeply spiritual view of Varanasi we will always treasure. She explained rituals with immense depth and respect.”
                         </p>
                         <div class="journal-author-box">
-                            <span class="journal-traveller-name">Traveller: Sneha</span>
-                            <span class="journal-guide-badge">Guide: Ananya Singh</span>
+                            <div class="journal-author-meta">
+                                <span class="journal-traveller-name">Traveller: Sneha</span>
+                                <span class="journal-guide-badge">Guide: Ananya Singh</span>
+                            </div>
+                            <button type="button" class="btn-helpful" onclick="markHelpful(this)">
+                                <span>🔖</span> Helpful (<span class="like-num">18</span>)
+                            </button>
                         </div>
                     </article>
 
@@ -187,8 +222,13 @@
                             “Tashi introduced us to local monastery elders and shared stories of high-altitude life that no guidebook could match. His knowledge of the valleys made us feel completely at home.”
                         </p>
                         <div class="journal-author-box">
-                            <span class="journal-traveller-name">Traveller: Amit</span>
-                            <span class="journal-guide-badge">Guide: Tashi Dorje</span>
+                            <div class="journal-author-meta">
+                                <span class="journal-traveller-name">Traveller: Amit</span>
+                                <span class="journal-guide-badge">Guide: Tashi Dorje</span>
+                            </div>
+                            <button type="button" class="btn-helpful" onclick="markHelpful(this)">
+                                <span>🔖</span> Helpful (<span class="like-num">18</span>)
+                            </button>
                         </div>
                     </article>
 
@@ -211,6 +251,7 @@
                     <li><a href="journal.html">Journal</a></li>
                     <li><a href="guides.html">Your Guides</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="booking.html">Book Trip</a></li>
                 </ul>
             </div>
             <div class="footer-bottom">
@@ -220,5 +261,7 @@
         </div>
     </footer>
 
+    <!-- Unified TravelArc JavaScript (Govind Jha L11-L17) -->
+    <script src="journal.js"></script>
 </body>
 </html>

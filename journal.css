@@ -99,18 +99,54 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 0.84rem;
+    gap: 12px;
+}
+
+.journal-author-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    text-align: left;
 }
 
 .journal-traveller-name {
     font-weight: 700;
     color: var(--color-text-title);
+    font-size: 0.88rem;
 }
 
 .journal-guide-badge {
     color: var(--color-accent);
     font-weight: 600;
     font-size: 0.82rem;
+}
+
+.btn-helpful {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap !important; /* STRICTLY PREVENTS ( 18 ) WRAPPING */
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.btn-helpful:hover {
+    background: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+.btn-helpful.active {
+    background: #fef3c7;
+    color: #92400e;
+    border-color: #f59e0b;
 }
 
 /* Responsive Grid for Journal */
@@ -124,4 +160,18 @@
     .journal-reviews-grid {
         grid-template-columns: 1fr;
     }
+}
+
+
+/* 13. READING ESTIMATE BADGE (Sagar - UI Enhancement) */
+.journal-read-estimate {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-muted);
+    background: #f1f5f9;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
 }
