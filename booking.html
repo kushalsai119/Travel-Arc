@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelArc — Book Your Tour</title>
+    <meta name="description" content="Book your curated Indian tour with live price calculation and instant booking confirmation.">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+
+    <!-- Fixed Header & Navigation -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                </div>
+                <div class="brand-name">Travel<span>Arc</span></div>
+            </a>
+
+            <nav aria-label="Main Navigation">
+                <ul class="nav-menu">
+                    <!-- 1. Home -->
+                    <li class="nav-item">
+                        <a href="index.html">
+                            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                            Home
+                        </a>
+                    </li>
+                    <!-- 2. Places -->
+                    <li class="nav-item">
+                        <a href="places.html">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Places
+                        </a>
+                    </li>
+                    <!-- 3. Journal -->
+                    <li class="nav-item">
+                        <a href="journal.html">
+                            <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+                            Journal
+                        </a>
+                    </li>
+                    <!-- 4. Your Guides -->
+                    <li class="nav-item">
+                        <a href="guides.html">
+                            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            Your Guides
+                        </a>
+                    </li>
+                    <!-- 5. Contact -->
+                    <li class="nav-item">
+                        <a href="contact.html">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            Contact
+                        </a>
+                    </li>
+                    <!-- 6. Book Trip (Active) -->
+                    <li class="nav-item active">
+                        <a href="booking.html">
+                            <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                            Book Trip
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-wrapper">
+        <div class="section" style="padding-top: 40px;">
+            <div class="container">
+                
+                <!-- Section Header -->
+                <div class="section-header">
+                    <span class="editorial-label">INSTANT TOUR BOOKING</span>
+                    <h1 class="section-title">Reserve Your <em>Travel Experience</em></h1>
+                    <p class="section-lead">
+                        Select your destination and dates. Watch the live estimator update in real-time.
+                    </p>
+                </div>
+
+                <!-- 2-Column Booking Section -->
+                <div class="booking-grid">
+
+                    <!-- LEFT COLUMN: Form -->
+                    <div class="booking-form-card">
+
+                        <!-- Big Green Confirmation Banner (Appears on Submit) -->
+                        <div id="successMsg" class="success-box">
+                            <h4>✅ Booking Confirmed Successfully!</h4>
+                            <p id="successDetails"></p>
+                        </div>
+
+                        <!-- General Error Banner -->
+                        <div id="errorBanner" class="error-box">
+                            ⚠️ Please fix the highlighted fields below before submitting.
+                        </div>
+
+                        <form id="bookingForm" novalidate>
+                            
+                            <!-- Full Name -->
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" class="form-input" placeholder="e.g. Rahul Sharma" required>
+                                <small id="nameError" class="error-msg"></small>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" class="form-input" placeholder="e.g. rahul@gmail.com" required>
+                                <small id="emailError" class="error-msg"></small>
+                            </div>
+
+                            <!-- Phone Number -->
+                            <div class="form-group">
+                                <label for="phone">Phone Number (10 digits) *</label>
+                                <input type="tel" id="phone" class="form-input" placeholder="e.g. 9876543210" maxlength="10" required>
+                                <small id="phoneError" class="error-msg"></small>
+                            </div>
+
+                            <!-- Destination Dropdown -->
+                            <div class="form-group">
+                                <label for="destination">Select Destination *</label>
+                                <select id="destination" class="form-input">
+                                    <option value="Kashmir">Kashmir (Dal Lake & Valleys) — ₹6,000 / person</option>
+                                    <option value="Kerala">Kerala (Alleppey Backwaters) — ₹5,500 / person</option>
+                                    <option value="Rajasthan">Rajasthan (Amber Fort & Deserts) — ₹5,000 / person</option>
+                                    <option value="Goa">Goa (Baga Beach & Coastal Culture) — ₹4,500 / person</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh (Rohtang Pass) — ₹5,000 / person</option>
+                                    <option value="Varanasi">Varanasi (Ghats & Riverfront) — ₹4,000 / person</option>
+                                    <option value="Meghalaya">Meghalaya (Living Root Bridge) — ₹6,500 / person</option>
+                                    <option value="Ladakh">Ladakh (Pangong Lake) — ₹7,000 / person</option>
+                                </select>
+                            </div>
+
+                            <!-- Assigned Local Guide (Optional / Auto-filled) -->
+                            <div class="form-group" id="guideGroup">
+                                <label for="guideSelect">Selected Tour Guide</label>
+                                <select id="guideSelect" class="form-input">
+                                    <option value="Any Verified Guide">Any Available Local Guide</option>
+                                    <option value="Kabir Khan">Kabir Khan (Kashmir Specialist - 7 Yrs Exp)</option>
+                                    <option value="Meera Nair">Meera Nair (Kerala Backwaters - 6 Yrs Exp)</option>
+                                    <option value="Aarav Sharma">Aarav Sharma (Rajasthan Heritage - 8 Yrs Exp)</option>
+                                    <option value="Rohan Thapa">Rohan Thapa (Himachal Trekking - 5 Yrs Exp)</option>
+                                    <option value="Ananya Singh">Ananya Singh (Varanasi Culture - 6 Yrs Exp)</option>
+                                    <option value="Tashi Dorje">Tashi Dorje (Ladakh High Altitude - 9 Yrs Exp)</option>
+                                </select>
+                            </div>
+
+                            <!-- Number of Guests -->
+                            <div class="form-group">
+                                <label for="guests">Number of Travelers *</label>
+                                <input type="number" id="guests" class="form-input" value="1" min="1" max="10">
+                            </div>
+
+                            <!-- Travel Date -->
+                            <div class="form-group">
+                                <label for="tripDate">Preferred Travel Date *</label>
+                                <input type="date" id="tripDate" class="form-input" required>
+                                <small id="dateError" class="error-msg"></small>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="button-row">
+                                <button type="submit" class="btn-submit" id="submitBtn">Confirm Booking</button>
+                                <button type="button" id="downloadBtn" class="btn-download">📥 Download bookings.json</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Live Cost Calculator -->
+                    <aside class="booking-summary-card">
+                        <div class="summary-header">
+                            <h3>Trip Estimate</h3>
+                            <span id="statusBadge" class="status-pill">Ready</span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Destination:</span>
+                            <strong id="summaryPlace">Kashmir</strong>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Assigned Guide:</span>
+                            <strong id="summaryGuide">Any Verified Guide</strong>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Rate per Person:</span>
+                            <strong id="summaryRate">₹6,000</strong>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Travelers:</span>
+                            <strong id="summaryGuests">1 Person</strong>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Booking Fee:</span>
+                            <strong style="color: #059669;">FREE</strong>
+                        </div>
+
+                        <div class="summary-total">
+                            <span>Estimated Total:</span>
+                            <h2 id="totalPrice">₹6,000</h2>
+                        </div>
+
+                        <div class="summary-note">
+                            💡 <strong>Live JavaScript Calculation:</strong> Change destination, guide, or number of travelers to watch the price calculate automatically!
+                        </div>
+                    </aside>
+
+                </div>
+
+                <!-- BOTTOM SECTION: Recent Bookings Table -->
+                <div class="bookings-section">
+                    <div class="section-header" style="text-align: left; margin-bottom: 12px;">
+                        <h2 style="font-family: var(--font-serif, serif); font-size: 1.5rem; color: #1a1e24; margin: 0;">
+                            Saved Bookings (Local JSON Storage)
+                        </h2>
+                        <p style="color: #64748b; font-size: 0.9rem; margin-top: 4px;">
+                            Submitted bookings are stored in <code>localStorage</code> and can be exported as a real <code>bookings.json</code> file anytime.
+                        </p>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="bookings-table">
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Customer Name</th>
+                                    <th>Destination</th>
+                                    <th>Guide</th>
+                                    <th>Travelers</th>
+                                    <th>Total Cost</th>
+                                    <th>Travel Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <!-- Populated dynamically by booking.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h3>TRAVELARC</h3>
+                    <p>Explore • Discover • Experience</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="places.html">Places</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                    <li><a href="guides.html">Your Guides</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="booking.html">Book Trip</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TravelArc. Curated Indian Travel & Local Guides.</p>
+                <p>College HTML5/CSS3/JavaScript Prototype & Academic Portfolio</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Clean, Reliable JavaScript -->
+    <script src="booking.js?v=2"></script>
+
+</body>
+</html>
