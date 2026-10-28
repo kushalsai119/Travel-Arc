@@ -58,6 +58,13 @@
                             Contact
                         </a>
                     </li>
+                    <!-- 6. Book Trip -->
+                    <li class="nav-item">
+                        <a href="booking.html">
+                            <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                            Book Trip
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -75,74 +82,84 @@
                     </p>
                 </div>
 
+                <!-- Interactive Guide Experience Filter -->
+                <div class="filter-bar-container" style="margin-top: 18px;">
+                    <div class="filter-pills-row">
+                        <button class="filter-pill active" onclick="filterGuides(0, this)">All Verified Guides</button>
+                        <button class="filter-pill" onclick="filterGuides(6, this)">6+ Years Experience</button>
+                        <button class="filter-pill" onclick="filterGuides(8, this)">8+ Years Veteran Guides</button>
+                    </div>
+                    <div id="guidesCount" class="result-count-badge">Showing 6 verified guides</div>
+                </div>
+
                 <!-- 3x2 Clean Desktop Grid (Destination Photographs Representing the Guide's Region) -->
                 <div class="grid-3">
 
                     <!-- Guide 1: Aarav Sharma -> Amber Fort, Rajasthan -->
-                    <article class="guide-card">
+                    <article class="guide-card" data-exp="8">
                         <div class="guide-image-wrap">
                             <img src="images/guide-rajasthan.jpg" alt="Real photograph of Mehrangarh Fort ramparts representing Rajasthan heritage guide">
                             <span class="guide-exp-badge">8 Years Experience</span>
                         </div>
                         <div class="guide-body">
                             <span class="guide-region">Rajasthan</span>
+                            <div class="guide-status-row"><span class="guide-avail-badge">● Available This Week</span></div>
                             <h3 class="guide-name">Aarav Sharma</h3>
+                            <div class="guide-lang-row"><span class="guide-lang-tag">Hindi</span><span class="guide-lang-tag">English</span><span class="guide-lang-tag">Rajasthani</span></div>
                             <div class="guide-specialty">Heritage & Culture Guide</div>
                             <p class="guide-desc">
                                 Deeply knowledgeable about Rajasthan's royal forts, palace architecture, and desert folk traditions.
                             </p>
                             <div class="guide-card-footer">
-                                <a href="contact.html" class="btn btn-primary">
-                                    Choose Guide
-                                </a>
+                                <a href="booking.html?place=Rajasthan&guide=Aarav+Sharma" class="btn btn-primary">Book Guide</a>
                             </div>
                         </div>
                     </article>
 
                     <!-- Guide 2: Meera Nair -> Alleppey Backwaters, Kerala -->
-                    <article class="guide-card">
+                    <article class="guide-card" data-exp="6">
                         <div class="guide-image-wrap">
                             <img src="images/guide-kerala.jpg" alt="Real photograph of Kochi Chinese fishing nets representing Kerala guide">
                             <span class="guide-exp-badge">6 Years Experience</span>
                         </div>
                         <div class="guide-body">
                             <span class="guide-region">Kerala</span>
+                            <div class="guide-status-row"><span class="guide-avail-badge">● Available This Week</span></div>
                             <h3 class="guide-name">Meera Nair</h3>
+                            <div class="guide-lang-row"><span class="guide-lang-tag">Malayalam</span><span class="guide-lang-tag">English</span><span class="guide-lang-tag">Tamil</span></div>
                             <div class="guide-specialty">Backwaters & Local Experiences</div>
                             <p class="guide-desc">
                                 Specializes in quiet village waterways, spice trail tours, and authentic traditional Kerala cuisine.
                             </p>
                             <div class="guide-card-footer">
-                                <a href="contact.html" class="btn btn-primary">
-                                    Choose Guide
-                                </a>
+                                <a href="booking.html?place=Kerala&guide=Meera+Nair" class="btn btn-primary">Book Guide</a>
                             </div>
                         </div>
                     </article>
 
                     <!-- Guide 3: Rohan Thapa -> Rohtang Pass, Himachal Pradesh -->
-                    <article class="guide-card">
+                    <article class="guide-card" data-exp="7">
                         <div class="guide-image-wrap">
                             <img src="images/guide-himachal.jpg" alt="Real photograph of Parvati alpine valley stream representing Himachal Pradesh mountain guide">
                             <span class="guide-exp-badge">7 Years Experience</span>
                         </div>
                         <div class="guide-body">
                             <span class="guide-region">Himachal Pradesh</span>
+                            <div class="guide-status-row"><span class="guide-avail-badge">● Available This Week</span></div>
                             <h3 class="guide-name">Rohan Thapa</h3>
+                            <div class="guide-lang-row"><span class="guide-lang-tag">Hindi</span><span class="guide-lang-tag">English</span><span class="guide-lang-tag">Pahari</span></div>
                             <div class="guide-specialty">Mountain & Adventure Guide</div>
                             <p class="guide-desc">
                                 Certified alpine trail guide leading scenic cedar forest hikes and peaceful valley excursions.
                             </p>
                             <div class="guide-card-footer">
-                                <a href="contact.html" class="btn btn-primary">
-                                    Choose Guide
-                                </a>
+                                <a href="booking.html?place=Himachal+Pradesh&guide=Rohan+Thapa" class="btn btn-primary">Book Guide</a>
                             </div>
                         </div>
                     </article>
 
                     <!-- Guide 4: Ananya Singh -> Dashashwamedh Ghat, Varanasi -->
-                    <article class="guide-card">
+                    <article class="guide-card" data-exp="6">
                         <div class="guide-image-wrap">
                             <img src="images/guide-varanasi.jpg" alt="Real photograph of historic Assi Ghat riverfront representing Varanasi culture guide">
                             <span class="guide-exp-badge">5 Years Experience</span>
@@ -155,15 +172,13 @@
                                 Passionate about ancient river traditions, classical philosophy, and historic artisan weavers.
                             </p>
                             <div class="guide-card-footer">
-                                <a href="contact.html" class="btn btn-primary">
-                                    Choose Guide
-                                </a>
+                                <a href="booking.html?place=Varanasi&guide=Ananya+Singh" class="btn btn-primary">Book Guide</a>
                             </div>
                         </div>
                     </article>
 
                     <!-- Guide 5: Kabir Khan -> Dal Lake, Kashmir -->
-                    <article class="guide-card">
+                    <article class="guide-card" data-exp="9">
                         <div class="guide-image-wrap">
                             <img src="images/guide-kashmir.jpg" alt="Real photograph of Betaab Valley in Pahalgam representing Kashmir valleys guide">
                             <span class="guide-exp-badge">9 Years Experience</span>
@@ -176,15 +191,13 @@
                                 Lifelong resident guiding authentic visits to highland meadows, walnut groves, and old craft studios.
                             </p>
                             <div class="guide-card-footer">
-                                <a href="contact.html" class="btn btn-primary">
-                                    Choose Guide
-                                </a>
+                                <a href="booking.html?place=Kashmir&guide=Kabir+Khan" class="btn btn-primary">Book Guide</a>
                             </div>
                         </div>
                     </article>
 
                     <!-- Guide 6: Tashi Dorje -> Pangong Lake, Ladakh -->
-                    <article class="guide-card">
+                    <article class="guide-card" data-exp="8">
                         <div class="guide-image-wrap">
                             <img src="images/guide-ladakh.jpg" alt="Real photograph of Diskit Monastery in Nubra Valley representing Ladakh mountain and monastery guide">
                             <span class="guide-exp-badge">8 Years Experience</span>
@@ -197,9 +210,7 @@
                                 Expert on high-altitude passes, ancient Buddhist monasteries, and local village life.
                             </p>
                             <div class="guide-card-footer">
-                                <a href="contact.html" class="btn btn-primary">
-                                    Choose Guide
-                                </a>
+                                <a href="booking.html?place=Ladakh&guide=Tashi+Dorje" class="btn btn-primary">Book Guide</a>
                             </div>
                         </div>
                     </article>
@@ -234,6 +245,7 @@
                     <li><a href="journal.html">Journal</a></li>
                     <li><a href="guides.html">Your Guides</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="booking.html">Book Trip</a></li>
                 </ul>
             </div>
             <div class="footer-bottom">
@@ -243,5 +255,7 @@
         </div>
     </footer>
 
+    <!-- Unified TravelArc JavaScript (Govind Jha L11-L17) -->
+    <script src="guides.js"></script>
 </body>
-</html>
+</html><article class="guide-card" data-exp="8"

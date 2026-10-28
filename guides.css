@@ -147,3 +147,32 @@
         grid-template-columns: 1fr;
     }
 }
+
+
+/* Guide Languages & Availability Badges (Jagannath - Enhancement) */
+.guide-status-row {
+    margin-bottom: 6px;
+}
+.guide-avail-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    color: #16a34a;
+    font-weight: 600;
+    background: #f0fdf4;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+.guide-lang-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 8px 0 10px 0;
+}
+.guide-lang-tag {
+    font-size: 0.72rem;
+    background: #f1f5f9;
+    color: #475569;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-weight: 500;
+}
