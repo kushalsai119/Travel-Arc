@@ -118,3 +118,4 @@ if (newsletterForm) {
         }
     });
 }
+// Kushal: newsletter subscription handler
