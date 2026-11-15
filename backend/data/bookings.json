@@ -1,0 +1,15 @@
+[
+  {
+    "bookingId": "TRV-8834",
+    "customerName": "Kushal Sai",
+    "email": "kushal@example.com",
+    "phone": "9988776655",
+    "destination": "Goa",
+    "guide": "Meera Nair",
+    "guests": 2,
+    "totalCost": "₹9,000",
+    "travelDate": "2026-12-05",
+    "status": "Confirmed",
+    "createdAt": "2026-11-14T11:28:31.956Z"
+  }
+]
