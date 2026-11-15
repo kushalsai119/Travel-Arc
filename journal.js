@@ -1,10 +1,10 @@
 /* ==========================================================================
    TRAVELARC — TRAVEL JOURNAL JAVASCRIPT (journal.js)
    Developer: Sagar (Roll No: 250346)
-   Features:
-   - Top Reading Scroll Progress Bar (Govind Jha L16 window scroll event)
-   - Live Helpful Ribbon Counter with Active Toggle
-   - LocalStorage Persistence for Article Reactions (Govind Jha L17)
+   Enhanced for 3rd Evaluation:
+   - Top Reading Scroll Progress Bar
+   - Live Helpful Reaction Counter connected to backend Express API (/api/v1/journal)
+   - Synchronized with local JSON file (journal_reactions.json) & MongoDB Atlas
    ========================================================================== */
 
 // 1. Reading Scroll Depth Progress Bar
@@ -20,14 +20,14 @@ window.addEventListener("scroll", function () {
     }
 });
 
-// 2. Helpful Ribbon Counter with LocalStorage (L16 DOM + L17 LocalStorage)
+// 2. Helpful Reaction Counter with Backend Sync (Local JSON + MongoDB)
 const STORAGE_KEY = "travelarc_journal_reactions";
 
 function getStoredReactions() {
     try {
         const stored = localStorage.getItem(STORAGE_KEY);
         return stored ? JSON.parse(stored) : {};
-    } catch (e) {
+    } catch {
         return {};
     }
 }
@@ -40,7 +40,7 @@ function saveStoredReactions(data) {
     }
 }
 
-function markHelpful(btn) {
+async function markHelpful(btn) {
     const card = btn.closest(".journal-review-card");
     const titleEl = card ? card.querySelector(".journal-story-title") : null;
     const storyId = titleEl ? titleEl.innerText.trim() : "story";
@@ -50,6 +50,7 @@ function markHelpful(btn) {
 
     const reactions = getStoredReactions();
     const isCurrentlyActive = btn.classList.contains("active");
+    const action = isCurrentlyActive ? "unlike" : "like";
 
     if (isCurrentlyActive) {
         btn.classList.remove("active");
@@ -61,22 +62,47 @@ function markHelpful(btn) {
         reactions[storyId] = { liked: true, count: currentCount + 1 };
     }
     saveStoredReactions(reactions);
+
+    // Sync with backend Express API -> local JSON file + MongoDB Atlas
+    try {
+        await fetch("/api/v1/journal/like", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ storyId, action })
+        });
+    } catch (err) {
+        console.warn("Backend reaction sync offline:", err.message);
+    }
 }
 
-// Restore saved reactions on page load (L17)
-document.addEventListener("DOMContentLoaded", function () {
-    const reactions = getStoredReactions();
+// Restore reactions on page load (from Backend API first)
+document.addEventListener("DOMContentLoaded", async function () {
+    let serverReactions = {};
+    try {
+        const res = await fetch("/api/v1/journal");
+        if (res.ok) {
+            const data = await res.json();
+            serverReactions = data.reactions || {};
+        }
+    } catch {}
+
+    const localReactions = getStoredReactions();
+
     document.querySelectorAll(".journal-review-card").forEach(function (card) {
         const titleEl = card.querySelector(".journal-story-title");
         if (!titleEl) return;
         const storyId = titleEl.innerText.trim();
-        if (reactions[storyId] && reactions[storyId].liked) {
-            const btn = card.querySelector(".btn-helpful");
-            const countSpan = card.querySelector(".like-num");
+        const countSpan = card.querySelector(".like-num");
+        const btn = card.querySelector(".btn-helpful");
+
+        // Update counts from server/local JSON
+        if (serverReactions[storyId] && serverReactions[storyId].count !== undefined) {
+            if (countSpan) countSpan.innerText = serverReactions[storyId].count;
+        }
+
+        // Keep active state if user previously liked it
+        if (localReactions[storyId] && localReactions[storyId].liked) {
             if (btn) btn.classList.add("active");
-            if (countSpan && reactions[storyId].count) {
-                countSpan.innerText = reactions[storyId].count;
-            }
         }
     });
 });

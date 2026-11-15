@@ -10,6 +10,7 @@ import connectDB from "./config/db.js";
 import bookingRoutes from "./routes/booking.routes.js";
 import contactRoutes from "./routes/contact.routes.js";
 import weatherRoutes from "./routes/weather.routes.js";
+import journalRoutes from "./routes/journal.routes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,6 +34,7 @@ app.use(express.static(rootDir));
 app.use("/api/v1/bookings", bookingRoutes);
 app.use("/api/v1/contacts", contactRoutes);
 app.use("/api/v1/weather", weatherRoutes);
+app.use("/api/v1/journal", journalRoutes);
 
 // API Health Check
 app.get("/api/v1/status", (req, res) => {
