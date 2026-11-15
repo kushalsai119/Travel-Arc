@@ -1,10 +1,11 @@
 /* ==========================================================================
    TRAVELARC — DESTINATIONS JAVASCRIPT (places.js)
    Developer: Gnaneshwar Reddy (Roll No: 250306)
-   Features:
-   - Real-Time Live Search Bar (Govind Jha L16 DOM input event & L13 String methods)
+   Enhanced for 3rd Evaluation:
+   - Parameter 1: Live Weather API integration for destinations
    - Category Filter Pills (Mountains, Coastal, Heritage)
-   - Ribbon Bookmark Toggle with Toast Notification Feedback (No Hearts)
+   - Real-Time Search Bar
+   - Ribbon Bookmark Toggle
    ========================================================================== */
 
 // 1. Category Filter Pills
@@ -36,7 +37,7 @@ function filterPlaces(category, pillBtn) {
     }
 }
 
-// 2. Real-Time Keystroke Search Bar (L16 DOM Event)
+// 2. Real-Time Keystroke Search Bar
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("destinationSearch");
     if (searchInput) {
@@ -61,9 +62,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
+    // Load Live Weather for Destination Cards (Parameter 1: External API)
+    loadLiveDestinationWeather();
 });
 
-// 3. Ribbon Bookmark Toggle (No Hearts - Clean Travel Bookmark)
+// 3. Ribbon Bookmark Toggle
 function toggleBookmark(btn, placeName) {
     btn.classList.toggle("saved");
     const isSaved = btn.classList.contains("saved");
@@ -78,4 +82,35 @@ function toggleBookmark(btn, placeName) {
             toast.style.display = "none";
         }, 2200);
     }
+}
+
+// 4. Live Weather Fetcher (Parameter 1: External API call)
+async function loadLiveDestinationWeather() {
+    const cards = document.querySelectorAll(".destination-card");
+    cards.forEach(async function (card) {
+        const titleEl = card.querySelector(".destination-title") || card.querySelector("h3");
+        if (!titleEl) return;
+        const placeName = titleEl.innerText.split("\n")[0].trim();
+
+        try {
+            const res = await fetch(`/api/v1/weather?destination=${encodeURIComponent(placeName)}`);
+            if (res.ok) {
+                const data = await res.json();
+                const weatherInfo = data.currentWeather;
+
+                // Add or update weather badge on the card
+                let weatherBadge = card.querySelector(".live-weather-badge");
+                if (!weatherBadge) {
+                    weatherBadge = document.createElement("div");
+                    weatherBadge.className = "live-weather-badge";
+                    weatherBadge.style.cssText = "font-size: 11px; color: #0284c7; background: #e0f2fe; padding: 4px 8px; border-radius: 999px; margin-top: 6px; display: inline-flex; align-items: center; gap: 4px; font-weight: 600;";
+                    const metaContainer = card.querySelector(".destination-meta") || card.querySelector(".destination-content") || card;
+                    metaContainer.appendChild(weatherBadge);
+                }
+                weatherBadge.innerHTML = `🌤️ ${weatherInfo.temperature} · ${weatherInfo.condition}`;
+            }
+        } catch {
+            // Quietly ignore if API is offline
+        }
+    });
 }
