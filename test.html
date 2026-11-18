@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelArc — API Tester (Signup & Login)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        h1 { color: #ea580c; text-align: center; }
+        p.subtitle { text-align: center; color: #64748b; margin-top: -10px; }
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+        }
+        h2 { margin-top: 0; font-size: 18px; color: #1e293b; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+        .form-group { margin-bottom: 14px; }
+        label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; color: #475569; }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input:focus { border-color: #ea580c; outline: none; }
+        button {
+            background: #ea580c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover { background: #c2410c; }
+        .response-box {
+            background: #0f172a;
+            color: #38bdf8;
+            padding: 14px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 14px;
+            margin-top: 14px;
+            white-space: pre-wrap;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>TravelArc API Tester</h1>
+    <p class="subtitle">Direct browser UI to test Govind Jha Sir's <code>/signup</code> and <code>/login</code> endpoints</p>
+
+    <!-- 1. SIGNUP CARD -->
+    <div class="card">
+        <h2>1. Test Signup (POST /signup)</h2>
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="regUser" value="rahul">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="regPass" value="rahul@123">
+        </div>
+        <div class="form-group">
+            <label>Age</label>
+            <input type="number" id="regAge" value="45">
+        </div>
+        <div class="form-group">
+            <label>City</label>
+            <input type="text" id="regCity" value="Delhi">
+        </div>
+        <button onclick="handleSignup()">Send Signup Request</button>
+        <div id="signupRes" class="response-box"></div>
+    </div>
+
+    <!-- 2. LOGIN CARD -->
+    <div class="card">
+        <h2>2. Test Login (POST /login)</h2>
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="loginUser" value="rahul">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="loginPass" value="rahul@123">
+        </div>
+        <button onclick="handleLogin()" style="background: #0284c7;">Send Login Request</button>
+        <div id="loginRes" class="response-box"></div>
+    </div>
+
+    <script>
+        async function handleSignup() {
+            const username = document.getElementById("regUser").value;
+            const password = document.getElementById("regPass").value;
+            const age = document.getElementById("regAge").value;
+            const city = document.getElementById("regCity").value;
+            const box = document.getElementById("signupRes");
+
+            box.style.display = "block";
+            box.innerText = "Sending POST /signup...";
+
+            try {
+                const res = await fetch("/signup", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password, age, city })
+                });
+                const data = await res.json();
+                box.innerText = "Status: " + res.status + " " + res.statusText + "\n\n" + JSON.stringify(data, null, 2);
+            } catch (err) {
+                box.innerText = "Error: " + err.message;
+            }
+        }
+
+        async function handleLogin() {
+            const username = document.getElementById("loginUser").value;
+            const password = document.getElementById("loginPass").value;
+            const box = document.getElementById("loginRes");
+
+            box.style.display = "block";
+            box.innerText = "Sending POST /login...";
+
+            try {
+                const res = await fetch("/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await res.json();
+                box.innerText = "Status: " + res.status + " " + res.statusText + "\n\n" + JSON.stringify(data, null, 2);
+            } catch (err) {
+                box.innerText = "Error: " + err.message;
+            }
+        }
+    </script>
+</body>
+</html>
