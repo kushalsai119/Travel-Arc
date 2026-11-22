@@ -6,6 +6,9 @@
    - Interactive Travel Season Matcher Widget (L12 Objects & L16 DOM Events)
    ========================================================================== */
 
+console.log("%c[TravelArc] home.js loaded successfully", "color: #0284c7; font-weight: bold; font-size: 13px;");
+console.log("[TravelArc] Backend Connected at: " + (window.location.origin.startsWith("http") ? window.location.origin : "http://localhost:5000"));
+
 // 1. Dynamic Time-of-Day Greeting
 document.addEventListener("DOMContentLoaded", function () {
     const greetingEl = document.getElementById("heroGreeting");

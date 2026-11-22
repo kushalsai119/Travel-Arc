@@ -8,6 +8,10 @@
    - Ribbon Bookmark Toggle
    ========================================================================== */
 
+const API_BASE = (window.location.protocol.startsWith("http")) ? "" : "http://localhost:5000";
+console.log("%c[TravelArc] places.js loaded successfully", "color: #0284c7; font-weight: bold; font-size: 13px;");
+console.log("[TravelArc] Weather API Endpoint: " + (API_BASE || window.location.origin) + "/api/v1/weather");
+
 // 1. Category Filter Pills
 function filterPlaces(category, pillBtn) {
     const pills = document.querySelectorAll(".filter-pill");
@@ -93,10 +97,11 @@ async function loadLiveDestinationWeather() {
         const placeName = titleEl.innerText.split("\n")[0].trim();
 
         try {
-            const res = await fetch(`/api/v1/weather?destination=${encodeURIComponent(placeName)}`);
+            const res = await fetch(`${API_BASE}/api/v1/weather?destination=${encodeURIComponent(placeName)}`);
             if (res.ok) {
                 const data = await res.json();
                 const weatherInfo = data.currentWeather;
+                console.log(`[TravelArc] Live weather for ${placeName}: ${weatherInfo.temperature}, ${weatherInfo.condition}`);
 
                 // Add or update weather badge on the card
                 let weatherBadge = card.querySelector(".live-weather-badge");

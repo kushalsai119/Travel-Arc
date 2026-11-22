@@ -8,6 +8,11 @@
    ========================================================================== */
 
 // 1. Reading Scroll Depth Progress Bar
+const JOURNAL_API = (window.location.protocol.startsWith("http"))
+    ? "/api/v1/journal"
+    : "http://localhost:5000/api/v1/journal";
+
+console.log("%c[TravelArc] journal.js loaded successfully", "color: #0284c7; font-weight: bold; font-size: 13px;");
 window.addEventListener("scroll", function () {
     const progressBar = document.getElementById("scrollProgress");
     if (progressBar) {
@@ -65,7 +70,7 @@ async function markHelpful(btn) {
 
     // Sync with backend Express API -> local JSON file + MongoDB Atlas
     try {
-        await fetch("/api/v1/journal/like", {
+        await fetch(`${JOURNAL_API}/like`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ storyId, action })
@@ -79,7 +84,7 @@ async function markHelpful(btn) {
 document.addEventListener("DOMContentLoaded", async function () {
     let serverReactions = {};
     try {
-        const res = await fetch("/api/v1/journal");
+        const res = await fetch(JOURNAL_API);
         if (res.ok) {
             const data = await res.json();
             serverReactions = data.reactions || {};

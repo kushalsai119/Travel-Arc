@@ -6,6 +6,8 @@
    - Dynamic Verified Guide Count Indicator
    ========================================================================== */
 
+console.log("%c[TravelArc] guides.js loaded successfully", "color: #0284c7; font-weight: bold; font-size: 13px;");
+
 function filterGuides(minExp, pillBtn) {
     const pills = document.querySelectorAll(".filter-pill");
     pills.forEach(function (pill) {

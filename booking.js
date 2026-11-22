@@ -7,7 +7,12 @@
    - Fallback: LocalStorage support if server is offline
    ========================================================================== */
 
-const API_BASE_URL = "/api/v1/bookings";
+const API_BASE_URL = (window.location.protocol.startsWith("http"))
+    ? "/api/v1/bookings"
+    : "http://localhost:5000/api/v1/bookings";
+
+console.log("%c[TravelArc] booking.js loaded successfully", "color: #16a34a; font-weight: bold; font-size: 13px;");
+console.log("[TravelArc] Bookings CRUD Endpoint: " + API_BASE_URL);
 
 // 1. Destination Pricing Object
 const placePrices = {

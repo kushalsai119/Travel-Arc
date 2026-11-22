@@ -6,6 +6,13 @@
    - Synchronized to local JSON (contacts.json) and MongoDB Atlas
    ========================================================================== */
 
+const CONTACT_API = (window.location.protocol.startsWith("http"))
+    ? "/api/v1/contacts"
+    : "http://localhost:5000/api/v1/contacts";
+
+console.log("%c[TravelArc] contact.js loaded successfully", "color: #0284c7; font-weight: bold; font-size: 13px;");
+console.log("[TravelArc] Contact API Endpoint: " + CONTACT_API);
+
 // 1. Interactive FAQ Accordion
 function toggleFaq(item) {
     item.classList.toggle("open");
@@ -64,11 +71,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Send to Express Backend API
             try {
-                await fetch("/api/v1/contacts", {
+                await fetch(CONTACT_API, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ name, email, subject, message: message || "Travel Inquiry" })
                 });
+                console.log("[TravelArc] Contact form inquiry saved to backend and MongoDB.");
             } catch (err) {
                 console.warn("Backend contact API offline, showing local success:", err.message);
             }
