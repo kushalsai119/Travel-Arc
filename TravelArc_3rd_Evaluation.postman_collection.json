@@ -1,0 +1,145 @@
+{
+  "info": {
+    "name": "TravelArc - 3rd Evaluation",
+    "_postman_id": "travelarc-3rd-evaluation-v2",
+    "description": "Standard 8-step API collection for TravelArc 3rd Evaluation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01 - Signup",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"gnaneshwar_demo\",\n  \"password\": \"pass123\",\n  \"age\": 21,\n  \"city\": \"Hyderabad\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/signup",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["signup"]
+        }
+      }
+    },
+    {
+      "name": "02 - Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"gnaneshwar_demo\",\n  \"password\": \"pass123\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["login"]
+        }
+      }
+    },
+    {
+      "name": "03 - Get Bookings",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/api/v1/bookings",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "bookings"]
+        }
+      }
+    },
+    {
+      "name": "04 - Create Booking",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"Gnaneshwar Reddy\",\n  \"email\": \"gnaneshwar@example.com\",\n  \"phone\": \"9876543210\",\n  \"destination\": \"Kerala\",\n  \"guide\": \"Meera Nair\",\n  \"travelDate\": \"2026-12-15\",\n  \"guests\": 2,\n  \"totalCost\": \"₹11,000\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/bookings",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "bookings"]
+        }
+      }
+    },
+    {
+      "name": "05 - Update Booking",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"destination\": \"Manali\",\n  \"guide\": \"Rajesh Sharma (Senior Guide)\",\n  \"guests\": 3\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/bookings/TRV-8834",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "bookings", "TRV-8834"]
+        }
+      }
+    },
+    {
+      "name": "06 - Delete Booking",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:5000/api/v1/bookings/TRV-5877",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "bookings", "TRV-5877"]
+        }
+      }
+    },
+    {
+      "name": "07 - Weather API",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/api/v1/weather?destination=Goa",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "weather"],
+          "query": [
+            { "key": "destination", "value": "Goa" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "08 - Server Status",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/api/v1/status",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "status"]
+        }
+      }
+    }
+  ]
+}
