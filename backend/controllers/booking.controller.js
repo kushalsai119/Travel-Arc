@@ -108,6 +108,16 @@ export const getAllBookings = async (req, res) => {
     }
 };
 
+import mongoose from "mongoose";
+
+// Helper: build query matching bookingId OR MongoDB _id
+const buildIdQuery = (id) => {
+    if (mongoose.isValidObjectId(id)) {
+        return { $or: [{ _id: id }, { bookingId: id }] };
+    }
+    return { bookingId: id };
+};
+
 // 3. READ single booking by ID (GET /api/v1/bookings/:id)
 export const getBookingById = async (req, res) => {
     try {
@@ -115,14 +125,14 @@ export const getBookingById = async (req, res) => {
         let booking = null;
 
         try {
-            booking = await Booking.findOne({ bookingId: id });
+            booking = await Booking.findOne(buildIdQuery(id));
         } catch (dbErr) {
             // Ignore DB error and fallback
         }
 
         if (!booking) {
             const list = readJSONFile();
-            booking = list.find((b) => b.bookingId === id || b._id === id);
+            booking = list.find((b) => b.bookingId === id || b._id === id || String(b._id) === id);
         }
 
         if (!booking) {
@@ -145,7 +155,7 @@ export const updateBooking = async (req, res) => {
         let updatedMongo = null;
         try {
             updatedMongo = await Booking.findOneAndUpdate(
-                { bookingId: id },
+                buildIdQuery(id),
                 { $set: updates },
                 { new: true }
             );
@@ -155,7 +165,7 @@ export const updateBooking = async (req, res) => {
 
         // Update in local JSON file
         const list = readJSONFile();
-        const index = list.findIndex((b) => b.bookingId === id);
+        const index = list.findIndex((b) => b.bookingId === id || b._id === id || String(b._id) === id);
         if (index !== -1) {
             list[index] = { ...list[index], ...updates, updatedAt: new Date().toISOString() };
             writeJSONFile(list);
@@ -181,14 +191,14 @@ export const deleteBooking = async (req, res) => {
 
         // Delete from MongoDB
         try {
-            await Booking.findOneAndDelete({ bookingId: id });
+            await Booking.findOneAndDelete(buildIdQuery(id));
         } catch (dbErr) {
             console.log("MongoDB delete error:", dbErr.message);
         }
 
         // Delete from local JSON file
         const list = readJSONFile();
-        const updatedList = list.filter((b) => b.bookingId !== id && b._id !== id);
+        const updatedList = list.filter((b) => b.bookingId !== id && b._id !== id && String(b._id) !== id);
         writeJSONFile(updatedList);
 
         return res.status(200).json({
